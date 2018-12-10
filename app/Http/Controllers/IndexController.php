@@ -22,4 +22,11 @@ class IndexController extends Controller
     	//$saleProducts = $products->where('on_sale', '1')->random()->max(16);
     	return view('pages.index', compact('categories', 'products', 'featuredProducts', 'saleProducts', 'popularCats'));
     }
+
+    public function show($slug)
+    {
+        $product = Product::where('slug', $slug)->first();
+        //dd($product);
+        return view('pages.show', compact('product'));
+    }
 }

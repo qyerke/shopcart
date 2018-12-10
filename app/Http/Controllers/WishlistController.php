@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Gloudemans\Shoppingcart\Facades\Cart;
 
-class CartController extends Controller
+class WishlistController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,8 @@ class CartController extends Controller
      */
     public function index()
     {
-        //dd(Cart::content());
-
-        return view('pages.cart');
+        //dd(Cart::instance('wishlist')->content());
+        return view('pages.wishlist');
     }
 
     /**
@@ -26,7 +25,7 @@ class CartController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -37,8 +36,7 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request->get($product->id));
-        Cart::add($request->id, $request->name, 1, $request->price)
+        Cart::instance('wishlist')->add($request->id, $request->name, 1, $request->price)
             ->associate('App\Product');
         return redirect()->back();
     }
@@ -85,12 +83,7 @@ class CartController extends Controller
      */
     public function destroy($id)
     {
-        Cart::remove($id);
-        return back();
-    }
-    public function clearCart()
-    {
-        Cart::destroy();
+        Cart::instance('wishlist')->remove($id);
         return back();
     }
 }

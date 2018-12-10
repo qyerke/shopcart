@@ -85,26 +85,37 @@
 					<div class="col-lg-4 col-9 order-lg-3 order-2 text-lg-left text-right">
 						<div class="wishlist_cart d-flex flex-row align-items-center justify-content-end">
 							<div class="wishlist d-flex flex-row align-items-center justify-content-end">
-								<div class="wishlist_icon"><img src="images/heart.png" alt=""></div>
+								<div class="wishlist_icon"><img src="/frontend/images/heart.png" alt=""></div>
 								<div class="wishlist_content">
 									<div class="wishlist_text"><a href="#">Wishlist</a></div>
 									<div class="wishlist_count">115</div>
 								</div>
 							</div>
 
-							<!-- Cart -->
-							<div class="cart">
-								<div class="cart_container d-flex flex-row align-items-center justify-content-end">
-									<div class="cart_icon">
-										<img src="/frontend/images/cart.png" alt="">
-										<div class="cart_count"><span>10</span></div>
-									</div>
-									<div class="cart_content">
-										<div class="cart_text"><a href="/frontend/#">Cart</a></div>
-										<div class="cart_price">$85</div>
-									</div>
+						<!-- Cart -->
+						<div class="cart">
+							<div class="cart_container d-flex flex-row align-items-center justify-content-end">
+								@if(Cart::count() > 0)
+								<div class="cart_icon">
+									<img src="/frontend/images/cart.png" alt="">
+									<div class="cart_count"><span>{{Cart::content()->count()}}</span></div>
 								</div>
+								<div class="cart_content">
+									<div class="cart_text"><a href="{{route('cart.index')}}">Cart</a></div>
+									<div class="cart_price">${{Cart::subtotal()}}</div>
+								</div>
+								@else
+								<div class="cart_icon">
+									<img src="/frontend/images/cart.png" alt="">
+									<div class="cart_count"><span>0</span></div>
+								</div>
+								<div class="cart_content">
+									<div class="cart_text"><a href="{{route('cart.index')}}">Cart</a></div>
+									<div class="cart_price">$0</div>
+								</div>
+								@endif
 							</div>
+						</div>
 						</div>
 					</div>
 				</div>
