@@ -315,5 +315,4 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <script src="/frontend/js/custom.js"></script>
 @stack('scripts')
 </body>
-
 </html>

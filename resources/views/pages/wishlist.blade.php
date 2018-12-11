@@ -19,7 +19,7 @@
 						<div class="cart_title">Wishlist</div>
 						<div class="cart_items">
 						@if(Cart::instance('wishlist')->count() == 0)
-							<h3>Cart is Empty</h3>
+							<h3>Wishlist is Empty</h3>
 						@else
 							<ul class="cart_list">
 								@foreach(Cart::instance('wishlist')->content() as $item)
